@@ -81,8 +81,9 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>iHeart E-book Gratuito</title>
+        <title>iHeart</title>
         <meta name="description" content="E-book gratuito 17 sinais que o corpo dá antes de uma crise de ansiedade" />
+        <meta property="og:image" content="/book.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

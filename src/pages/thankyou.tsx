@@ -12,7 +12,7 @@ import { useWindowSize } from 'react-use'
 const poppins = Poppins({ subsets: ['latin'], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] })
 
 export default function ThankYou() {
-  const [showConfetti, setShowConfetti] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false)
 
   const router = useRouter()
   const { width, height } = useWindowSize()
@@ -20,20 +20,20 @@ export default function ThankYou() {
   const { name } = router.query
 
   useEffect(() => {
-    setShowConfetti(true);
+    setShowConfetti(true)
   }, [])
 
   return (
     <>
-      <Confetti
-        width={width}
-        height={height}
-        recycle={false}
-        numberOfPieces={300}
-        colors={['#c667e0', '#252525', '#fada89', '#e7aaf8', '#467cd0']}
-        run={showConfetti}
-      />
-
+      {showConfetti &&
+        <Confetti
+          width={width}
+          height={height}
+          recycle={false}
+          numberOfPieces={400}
+          colors={['#c667e0', '#252525', '#fada89', '#e7aaf8', '#467cd0']}
+        />
+      }
       <Head>
         <title>Obrigado!</title>
         <meta name="description" content="E-book gratuito 17 sinais que o corpo dá antes de uma crise de ansiedade" />
@@ -42,7 +42,7 @@ export default function ThankYou() {
       </Head>
 
       <main className='flex flex-1 flex-col bg-background gap-16 md:gap-0 px-8 md:px-0 pb-16 md:pb-0'>
-        <section className='flex flex-1 flex-col md:min-h-screen items-center justify-center gap-10 pt-6 md:pt-0'>
+        <section className='flex flex-1 flex-col min-h-screen items-center justify-center gap-10 pt-6 md:pt-0'>
           <div className='flex flex-col gap-4 md:gap-2 items-center justify-center'>
             <h1 className={classNames('font-extrabold text-2xl md:text-4xl text-black md:text-center md:w-[800px]', poppins.className)}>
               Sucesso, {name}!

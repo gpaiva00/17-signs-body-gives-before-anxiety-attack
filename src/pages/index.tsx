@@ -138,7 +138,7 @@ export default function Home() {
           <Button
             text='Quero meu e-book gratuito agora!'
             onClick={scrollToFormSection}
-            poppinsClassName={poppins.className}
+            fontFamilyClass={poppins.className}
           />
         </section>
 
@@ -169,7 +169,7 @@ export default function Home() {
                 text='Quero meu e-book gratuito agora!'
                 disabled={isButtonEnabled}
                 onClick={scrollToFormSection}
-                poppinsClassName={poppins.className}
+                fontFamilyClass={poppins.className}
               />
             </form>
           </div>
@@ -207,7 +207,7 @@ export default function Home() {
             type="submit"
             text='Quero meu e-book gratuito agora!'
             onClick={scrollToFormSection}
-            poppinsClassName={poppins.className}
+            fontFamilyClass={poppins.className}
           />
 
         </section>

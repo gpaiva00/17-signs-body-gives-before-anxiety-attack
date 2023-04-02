@@ -45,11 +45,12 @@ export default function Home() {
     const formData = new FormData(form);
 
     const name = formData.get('name');
+    const firstName = name?.toString().split(' ')[0];
     const email = formData.get('email');
 
     const templateParams = {
-      from_name: name,
-      to_name: name,
+      from_name: firstName,
+      to_name: firstName,
       attachment: EBOOK_URL,
       to_email: email,
     }
@@ -60,7 +61,8 @@ export default function Home() {
       const response = await emailjs.send(
         SERVICE_ID as string,
         TEMPLATE_ID as string,
-        templateParams, PUBLIC_KEY
+        templateParams,
+        PUBLIC_KEY,
       )
 
       if (response.status === 200) {
@@ -68,7 +70,7 @@ export default function Home() {
 
         router.push({
           pathname: '/thankyou',
-          query: { name: name as string },
+          query: { name: firstName as string },
         })
       }
     } catch (error) {
@@ -156,12 +158,12 @@ export default function Home() {
             <form action="#" onSubmit={handleSendMail} method="POST" className='flex flex-col gap-5'>
               <span className='flex flex-col gap-2'>
                 <label htmlFor="name" className={classNames('font-semibold text-black', poppins.className)}>Seu nome</label>
-                <input type="text" required minLength={3} name="name" id="name" className='rounded-md h-10 px-2' />
+                <input type="text" required minLength={3} name="name" id="name" placeholder='Ex: Ana' className='rounded-md h-10 px-2 capitalize' />
               </span>
 
               <span className='flex flex-col gap-2'>
                 <label htmlFor="email" className={classNames('font-semibold text-black', poppins.className)}>Seu melhor e-mail</label>
-                <input type="email" required name="email" id="email" className='rounded-md h-10 px-2' />
+                <input type="email" required name="email" id="email" placeholder='exemplo@email.com' className='rounded-md h-10 px-2' />
               </span>
 
               <Button
